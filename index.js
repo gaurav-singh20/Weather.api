@@ -7,6 +7,11 @@ const pb = new PocketBase("https://linkify.pockethost.io/");
 const app = express();
 const PORT = 8080;
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 const getWeather = async (city) => {
   let response = await axios.get(
     `http://api.weatherapi.com/v1/current.json?key=6c5c3579842f4dab8af195057241704&q=${city}&aqi=no`
