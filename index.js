@@ -37,7 +37,7 @@ const getWeather = async (city) => {
     return newData;
   } else {
     console.log("Retrying");
-    return getWeather(city);
+    return await getWeather(city);
   }
 };
 
