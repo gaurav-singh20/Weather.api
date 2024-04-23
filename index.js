@@ -32,7 +32,6 @@ app.get("/:city", async (req, res) => {
         date: data.location.localtime,
         is_day: data.current.is_day,
       };
-      res.send(newData);
       try {
         const record = await pb
           .collection("weather")
@@ -43,12 +42,13 @@ app.get("/:city", async (req, res) => {
         await pb.collection("weather").create(newData);
         console.log("CREATED");
       }
+      res.send(newData);
     } else {
-      res.status(400).send({ error: "Invalid response from weather API" });
+      res.send({ error: "Invalid response from weather API" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: "Error fetching weather data" });
+    res.send({ error: "Error fetching weather data" });
   }
 });
 
