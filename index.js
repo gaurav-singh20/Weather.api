@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 import PocketBase from "pocketbase";
 
-const pb = new PocketBase("https://linkify.pockethost.io/");
+const pb = new PocketBase("https://thus-happily.pockethost.io/");
 
 const app = express();
 const PORT = 8080;
